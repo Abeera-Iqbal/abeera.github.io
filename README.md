@@ -6,4 +6,4 @@ Open `index.html` in a browser to preview. No build or installation is required.
 
 To publish on GitHub Pages, push the files to the repository, then select **Settings → Pages → Deploy from a branch**, choose the branch containing these files, and select **/ (root)**.
 
-The content includes verified GitHub identity and clearly illustrative security workflows. Add your own biography, real projects, work history, photo, resume, and contact details before presenting those as personal credentials. Edit `index.html` for content, `style.css` for appearance, and `script.js` for the demo.
+Profile content is based on the supplied ABEERA IQBAL CV.pdf, with the supplied portrait and a downloadable CV in assets/. The SOC architecture and incident replay remain clearly labeled illustrative demonstrations. Certificate issuers and individual project repository URLs were not supplied and are not invented. Edit `index.html` for content, `style.css` for appearance, and `script.js` for the demo.
