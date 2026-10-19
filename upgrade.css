@@ -17,3 +17,21 @@ section{padding:90px 0}.band,.dark .band{background-color:color-mix(in srgb,var(
 @media(max-width:780px){header{height:auto;position:sticky}nav{padding:15px 0;flex-wrap:wrap;gap:10px}.nav-links{order:3;flex-basis:100%;overflow-x:auto;justify-content:flex-start;gap:21px;padding-bottom:3px;white-space:nowrap;scrollbar-width:thin}.nav-links a{font-size:11px}.brand{font-size:13px}#theme{margin-left:auto}.hero-grid{grid-template-columns:1fr;gap:55px}.hero{padding:55px 0 65px}.hero h1{font-size:clamp(49px,9vw,70px)}.hero h2{font-size:25px}.hero .lead{font-size:17px;max-width:100%}.hero .muted{max-width:100%}.hero-visual{width:100%;max-width:420px}.avatar{width:230px;height:230px}.status-card{max-width:100%}.hero-tags{gap:25px}.hero-tags span{padding-right:25px}.split{grid-template-columns:1fr;gap:30px}.split .muted{max-width:100%}.about-grid{grid-template-columns:1fr;gap:30px}.contact-grid{grid-template-columns:1fr;gap:30px}.education-grid{grid-template-columns:1fr}.education-grid>.card:first-child{grid-column:auto}section{padding:65px 0}.section-heading h2,h2{font-size:30px}.hero .tiny{font-size:10px}}
 @media(max-width:480px){.container{width:89%}.hero h1{font-size:49px;letter-spacing:-2.8px}.hero h2{font-size:21px}.hero-tags{gap:16px}.hero-tags span{padding-right:16px;font-size:9px}.hero-tags b{font-size:23px!important}.projects .card{padding:23px}.skills-grid{grid-template-columns:1fr}.skill-card{min-height:0;padding:25px}.skill-symbol{margin-bottom:17px}.card-top{font-size:8px}.timeline-item .card{padding:22px}.contact-note{padding:23px}.back-to-top{bottom:15px;right:15px}.about-lead{font-size:26px}.diagram-title{letter-spacing:.7px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.avatar,.reveal{animation:none!important}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Portrait and CV summary */
+.hero-visual{gap:20px;max-width:390px;width:100%;justify-self:end}
+.portrait-card{width:100%;margin:0;border:1px solid var(--border);border-radius:20px;overflow:hidden;background:var(--card);box-shadow:0 20px 60px #020b1730}
+.portrait-topline{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;font:500 8px 'Space Grotesk',sans-serif;letter-spacing:1.5px;color:var(--muted);border-bottom:1px solid var(--border)}
+.portrait-topline .live-dot{margin:0;flex-shrink:0}
+.portrait-image{height:360px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#376d7540,transparent 65%),linear-gradient(140deg,var(--card),var(--bg))}
+.portrait-image:before{content:'';position:absolute;inset:28px;border:1px solid #6bdac214;border-radius:50%;pointer-events:none}
+.portrait-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;transform:scale(1.25);transform-origin:center top}
+.portrait-card figcaption{position:relative;padding:19px 23px;border-top:1px solid var(--border);background:var(--card);display:flex;flex-direction:column;gap:3px}
+.portrait-card figcaption strong{font:600 20px 'Space Grotesk',sans-serif;letter-spacing:-.5px}.portrait-card figcaption>span{color:var(--teal);font-size:11px}
+.cv-focus{width:100%;padding:19px 20px;border:1px solid var(--border);border-radius:12px;background:var(--card)}
+.cv-focus>.eyebrow{font-size:8px;margin:0 0 6px;color:var(--blue)}
+.cv-focus>div{display:flex;align-items:start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}.cv-focus>div:last-child{border-bottom:0;padding-bottom:0}
+.cv-focus>div>span{font:500 10px/1.7 'Space Grotesk',sans-serif;color:var(--teal);padding-top:1px}.cv-focus p{margin:0}.cv-focus strong{font-size:12px;font-weight:600;display:block}.cv-focus small{font-size:10px;color:var(--muted);display:block;margin-top:3px;line-height:1.7}
+@media(max-width:1050px){.portrait-image{height:330px}.hero-grid{gap:35px}}
+@media(max-width:780px){.hero-visual{justify-self:center;max-width:390px}.portrait-image{height:370px}}
+@media(max-width:400px){.portrait-image{height:320px}.portrait-topline{font-size:7px;letter-spacing:1px}.cv-focus{padding:18px}}

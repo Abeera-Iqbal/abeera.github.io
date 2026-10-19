@@ -74,3 +74,32 @@ window.addEventListener('scroll', queueScrollUpdate, { passive: true });
 window.addEventListener('resize', queueScrollUpdate);
 window.addEventListener('load', queueScrollUpdate);
 updateScrollState();
+
+const projectFilters = [...document.querySelectorAll('[data-filter]')];
+const projectCards = [...document.querySelectorAll('.project-card')];
+projectFilters.forEach(button => button.addEventListener('click', () => {
+  const category = button.dataset.filter;
+  projectFilters.forEach(filter => {
+    const selected = filter === button;
+    filter.classList.toggle('selected', selected);
+    filter.setAttribute('aria-pressed', String(selected));
+  });
+  let visible = 0;
+  projectCards.forEach(card => {
+    card.hidden = category !== 'all' && card.dataset.category !== category;
+    if (!card.hidden) visible++;
+  });
+  document.querySelector('.projects').classList.toggle('is-filtered', category !== 'all');
+  document.querySelector('#project-count').textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
+  queueScrollUpdate();
+}));
+
+document.querySelector('#copy-email').addEventListener('click', async () => {
+  const status = document.querySelector('#copy-status');
+  try {
+    await navigator.clipboard.writeText('abeeraiqbal04@gmail.com');
+    status.textContent = 'Email address copied.';
+  } catch {
+    status.textContent = 'Select the email address to copy it, or click it to write an email.';
+  }
+});
