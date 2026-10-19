@@ -23,3 +23,7 @@
 .defense-tools{display:block;margin-top:auto;padding-top:8px}
 @media(max-width:1000px){.defense-grid{gap:18px}.defense-grid article,.defense-grid article:last-child{padding:25px}}
 @media(max-width:780px){.defense-section{padding:65px 0}.defense-section .section-heading{margin-bottom:32px}.defense-grid{gap:20px}.defense-grid article,.defense-grid article:last-child{padding:27px}.defense-number{float:none;margin:0 0 24px}.defense-grid h3{margin-top:0;margin-bottom:16px}.defense-grid p{padding-top:0;margin-bottom:22px}}
+
+/* Education accents match the brand in both themes. */
+.education-grid>.card{border-top-color:var(--teal)}
+.education-grid .eyebrow{color:var(--teal)}
