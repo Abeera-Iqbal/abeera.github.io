@@ -30,3 +30,47 @@ try { setTheme(localStorage.getItem('abeera-theme') !== 'light'); } catch { setT
 theme.addEventListener('click', () => { const dark = !document.body.classList.contains('dark'); setTheme(dark); try { localStorage.setItem('abeera-theme', dark ? 'dark' : 'light'); } catch { /* Theme still works without persistence. */ } });
 document.querySelector('#year').textContent = new Date().getFullYear();
 showStage(0);
+
+// Keep content visible by default; animate only when it enters the viewport.
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if ('IntersectionObserver' in window && !reducedMotion.matches) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section-heading, .center-heading, .projects .card, .skill-card, .timeline-item .card, .education-grid .card, .resume-panel').forEach(element => revealObserver.observe(element));
+}
+
+const navigation = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+const navigationTargets = navigation.map(link => ({ link, section: document.querySelector(link.getAttribute('href')) })).filter(item => item.section);
+const progress = document.querySelector('.reading-progress');
+const backToTop = document.createElement('a');
+backToTop.className = 'back-to-top';
+backToTop.href = '#main';
+backToTop.textContent = '↑';
+backToTop.setAttribute('aria-label', 'Back to top');
+backToTop.hidden = true;
+document.body.append(backToTop);
+let scrollQueued = false;
+function updateScrollState() {
+  const maximum = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.transform = `scaleX(${maximum > 0 ? Math.min(1, Math.max(0, window.scrollY / maximum)) : 0})`;
+  backToTop.hidden = window.scrollY < 600;
+  let active;
+  const headerHeight = document.querySelector('header').getBoundingClientRect().height;
+  document.documentElement.style.scrollPaddingTop = `${headerHeight + 20}px`;
+  navigationTargets.forEach(item => { if (item.section.getBoundingClientRect().top <= headerHeight + 90) active = item; });
+  navigation.forEach(link => { if (active && link === active.link) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+  scrollQueued = false;
+}
+function queueScrollUpdate() {
+  if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(updateScrollState); }
+}
+window.addEventListener('scroll', queueScrollUpdate, { passive: true });
+window.addEventListener('resize', queueScrollUpdate);
+window.addEventListener('load', queueScrollUpdate);
+updateScrollState();
